@@ -5,13 +5,12 @@ TabWidth: 4
 UseTab: Never
 
 BreakBeforeBraces: Attach
-AllowShortIfStatementsOnASingleLine: Never
+AllowShortIfStatementsOnASingleLine: WithoutElse
 AllowShortLoopsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
 AlwaysBreakTemplateDeclarations: Yes
 BreakConstructorInitializers: BeforeColon
 PackConstructorInitializers: Never
-
 
 PointerAlignment: Left
 DerivePointerAlignment: false

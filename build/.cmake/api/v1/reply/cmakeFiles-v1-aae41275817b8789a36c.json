@@ -1,4 +1,17 @@
 {
+	"globsDependent" : 
+	[
+		{
+			"expression" : "D:/HOBBY/Programming/Projects/TicTacToe/src/*.cpp",
+			"paths" : 
+			[
+				"D:/HOBBY/Programming/Projects/TicTacToe/src/board.cpp",
+				"D:/HOBBY/Programming/Projects/TicTacToe/src/game.cpp",
+				"D:/HOBBY/Programming/Projects/TicTacToe/src/main.cpp"
+			],
+			"recurse" : true
+		}
+	],
 	"inputs" : 
 	[
 		{

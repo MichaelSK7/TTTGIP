@@ -48,6 +48,15 @@ rule RERUN_CMAKE
 
 
 #############################################
+# Rule for re-checking globbed directories.
+
+rule VERIFY_GLOBS
+  command = "C:\Program Files\CMake\bin\cmake.exe" -P D:\HOBBY\Programming\Projects\TicTacToe\build\CMakeFiles\VerifyGlobs.cmake
+  description = Re-checking globbed directories...
+  generator = 1
+
+
+#############################################
 # Rule for cleaning all built files.
 
 rule CLEAN
