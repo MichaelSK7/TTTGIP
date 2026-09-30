@@ -4,29 +4,28 @@
 #include <stdint.h>
 
 char TTT::Board::valueToChar(Piece p) {
-    if (p == Piece::O) return 'O';
-    if (p == Piece::X) return 'X';
+    if (p == Piece::o) return 'o';
+    if (p == Piece::x) return 'x';
     return '.';
 }
 
 TTT::Piece TTT::Board::charToValue(char character) {
     switch (character) {
-    case 'X':
-        return Piece::X;
-    case 'O':
-        return Piece::O;
+    case 'x':
+        return Piece::x;
+    case 'o':
+        return Piece::o;
     default:
         return Piece::None;
     }
 };
 
 void TTT::Board::main() {
-    displayBoard();
-
-    place(3, 'X');
-    displayBoard();
-
-    clearBoard();
+    place(2);
+    place(3);
+    place(5);
+    place(1);
+    place(8);
     displayBoard();
 }
 
@@ -40,12 +39,12 @@ void TTT::Board::displayBoard() {
 }
 
 void TTT::Board::clearBoard() {
-    for (size_t i = 1; i <= 9; i++) {
+    for (size_t i = 1; i <= slotCount; i++) {
         setSlotValue(i, 'F', true);
     }
 }
 
-TTT::PlaceResult TTT::Board::setSlotValue(uint8_t slot, char input) {
+TTT::PlaceResult TTT::Board::setSlotValue(uint8_t slot, Piece input) {
     if (slot < 0 || slot > 9) return PlaceResult::OutOfRange;
 
     size_t r = (slot - 1) / rows;
@@ -53,22 +52,22 @@ TTT::PlaceResult TTT::Board::setSlotValue(uint8_t slot, char input) {
 
     if (currentBoard[r][c] != Piece::None) return PlaceResult::SlotTaken;
 
-    currentBoard[r][c] = charToValue(input);
+    currentBoard[r][c] = input;
     return PlaceResult::Ok;
 };
 
 TTT::PlaceResult TTT::Board::setSlotValue(uint8_t slot, char input, bool isForClear) {
     if (slot < 0 || slot > 9) return PlaceResult::OutOfRange;
 
-    size_t r = (slot - 1) / rows;
+    size_t r = (slot - 1) / cols;
     size_t c = (slot - 1) % cols;
 
     currentBoard[r][c] = charToValue(input);
     return PlaceResult::Ok;
 };
 
-void TTT::Board::place(uint8_t slot, char value) {
-    PlaceResult result = setSlotValue(slot, value);
+void TTT::Board::place(uint8_t slot) {
+    PlaceResult result = setSlotValue(slot, currentTurn);
 
     switch (result) {
     case PlaceResult::Ok:
@@ -79,11 +78,15 @@ void TTT::Board::place(uint8_t slot, char value) {
     case PlaceResult::SlotTaken:
         std::cout << "That slot is taken\n";
         break;
-    case PlaceResult::InvalidPiece:
-        std::cout << "Bad piece\n";
-        break;
     }
 };
 
-TTT::State TTT::Board::SearchTripple(const Piece& board) {
-}
+// TTT::State TTT::Board::SearchTripple() {
+//     for (size_t i = 0; i <= slotCount - 1; i++) {
+//         switch ()
+//     }
+// }
+
+const TTT::Piece& TTT::Board::getCurrentBoard() {
+    return currentBoard;
+};

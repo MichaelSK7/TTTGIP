@@ -6,7 +6,7 @@
 
 namespace TTT {
 
-enum class Piece : uint8_t { None, X, O };
+enum class Piece : uint8_t { None, x, o };
 
 enum class PlaceResult : uint8_t { Ok, OutOfRange, SlotTaken, InvalidPiece };
 
@@ -19,6 +19,8 @@ class Board {
     uint8_t XCount = 0;
     uint8_t OCount = 0;
 
+    Piece currentTurn = Piece::x;
+
     Piece currentBoard[3][3] = {};
 
   public:
@@ -29,11 +31,13 @@ class Board {
     Piece charToValue(char character);
     char valueToChar(Piece p);
 
-    PlaceResult setSlotValue(uint8_t slot, char value);
+    PlaceResult setSlotValue(uint8_t slot, Piece value);
     PlaceResult setSlotValue(uint8_t slot, char value, bool isForClear);
-    void place(uint8_t slot, char value);
+    void place(uint8_t slot);
 
     State SearchTripple();
+
+    const Piece& getCurrentBoard();
 };
 
 }; // namespace TTT
