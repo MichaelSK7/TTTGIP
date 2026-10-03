@@ -1,3 +1,3 @@
 D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/myProgram.dir
-D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/ALL_BUILD.dir
-D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/ZERO_CHECK.dir
+D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/edit_cache.dir
+D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/rebuild_cache.dir

@@ -13,8 +13,12 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"    
 )
 
-add_executable(myProgram ${SOURCES}
-)
+if (MSVC)
+    target_compile_options(myProgram PRIVATE /W4)
+
+endif()
+
+add_executable(myProgram ${SOURCES})
 
 target_include_directories(myProgram PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src

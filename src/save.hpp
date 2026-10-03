@@ -6,15 +6,16 @@
 #include <fstream>
 
 namespace TTT {
-class GameSave {
+class GameSave : Board {
   private:
     std::filesystem::path savePath;
-    std::ofstream output;
+    std::ofstream saveFile;
+    std::filesystem::path savesDirPath;
 
   public:
     GameSave();
     GameSave(std::filesystem::path customSavePath);
 
-    void save(TTT::Board& board);
+    void saveBoard(TTT::Board board);
 };
 } // namespace TTT

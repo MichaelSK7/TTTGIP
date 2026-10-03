@@ -4,9 +4,11 @@
 # SOURCES at CMakeLists.txt:12 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/HOBBY/Programming/Projects/TicTacToe/src/*.cpp")
 set(OLD_GLOB
+  "D:/HOBBY/Programming/Projects/TicTacToe/src/AI.cpp"
   "D:/HOBBY/Programming/Projects/TicTacToe/src/board.cpp"
   "D:/HOBBY/Programming/Projects/TicTacToe/src/game.cpp"
   "D:/HOBBY/Programming/Projects/TicTacToe/src/main.cpp"
+  "D:/HOBBY/Programming/Projects/TicTacToe/src/save.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

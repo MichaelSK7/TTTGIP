@@ -2,24 +2,26 @@
 
 #include "types/state.hpp"
 
-#include <stdint.h>
+#include <string>
+#include <vector>
 
 namespace TTT {
 
-enum class Piece : uint8_t { None, x, o };
+enum class Piece : int { None, x, o };
 
-enum class PlaceResult : uint8_t { Ok, OutOfRange, SlotTaken, InvalidPiece };
+enum class PlaceResult : int { Ok, OutOfRange, SlotTaken, InvalidPiece };
 
 class Board {
   private:
-    const uint8_t rows = 3;
-    const uint8_t cols = 3;
-    const uint8_t slotCount = 9;
+    const int rows = 3;
+    const int cols = 3;
+    const int slotCount = 9;
 
-    uint8_t XCount = 0;
-    uint8_t OCount = 0;
+    int XCount = 0;
+    int OCount = 0;
 
-    Piece currentTurn = Piece::x;
+    Piece currentPlayer = Piece::o;
+    int totalPlayedTurns = 0;
 
     Piece currentBoard[3][3] = {};
 
@@ -31,13 +33,17 @@ class Board {
     Piece charToValue(char character);
     char valueToChar(Piece p);
 
-    PlaceResult setSlotValue(uint8_t slot, Piece value);
-    PlaceResult setSlotValue(uint8_t slot, char value, bool isForClear);
-    void place(uint8_t slot);
+    PlaceResult setSlotValue(int slot, Piece value);
+    PlaceResult setSlotValue(int slot, Piece value, bool isForClear);
+    void place(int slot);
 
-    State SearchTripple();
+    std::string getCurrentBoardAsString();
 
-    const Piece& getCurrentBoard();
+    bool gameOver();
+    bool boardIsFull();
+    bool checkWin(Piece player);
+    int score(Board& thisBoard);
+    std::vector<int> getAvailableMoves();
 };
 
 }; // namespace TTT
