@@ -20,16 +20,7 @@ TTT::Piece TTT::Board::charToValue(char character) {
     }
 };
 
-void TTT::Board::main() {
-    place(2);
-    place(3);
-    place(5);
-    place(1);
-    place(8);
-    std::cout << getCurrentBoardAsString();
-}
-
-void TTT::Board::displayBoard() {
+void TTT::Board::showBoard() {
     for (size_t r = 0; r < rows; r++) {
         for (size_t c = 0; c < cols; c++) {
             std::cout << valueToChar(currentBoard[r][c]) << ' ';
@@ -44,20 +35,20 @@ void TTT::Board::clearBoard() {
     }
 }
 
-TTT::PlaceResult TTT::Board::setSlotValue(int slot, Piece input) {
-    if (slot < 0 || slot > 9) return PlaceResult::OutOfRange;
+TTT::PlaceResult TTT::Board::setSlotValue(int slot, Piece piece) {
+    if (slot < 1 || slot > 9) return PlaceResult::OutOfRange;
 
     size_t r = (slot - 1) / rows;
     size_t c = (slot - 1) % cols;
 
     if (currentBoard[r][c] != Piece::None) return PlaceResult::SlotTaken;
 
-    currentBoard[r][c] = input;
+    currentBoard[r][c] = piece;
     return PlaceResult::Ok;
 };
 
 TTT::PlaceResult TTT::Board::setSlotValue(int slot, Piece input, bool isForClear) {
-    if (slot < 0 || slot > 9) return PlaceResult::OutOfRange;
+    if (slot < 1 || slot > 9) return PlaceResult::OutOfRange;
 
     size_t r = (slot - 1) / rows;
     size_t c = (slot - 1) % cols;
@@ -66,22 +57,31 @@ TTT::PlaceResult TTT::Board::setSlotValue(int slot, Piece input, bool isForClear
     return PlaceResult::Ok;
 };
 
-void TTT::Board::place(int slot) {
-    PlaceResult result = setSlotValue(slot, currentPlayer);
+void TTT::Board::forceSetSlotValue(int slot, Piece piece) {
+    // This function is meant for specific reasons.
+    // NOT SAFE
+    size_t r = (slot - 1) / rows;
+    size_t c = (slot - 1) % cols;
+
+    currentBoard[r][c] = piece;
+};
+
+bool TTT::Board::place(int slot, Piece piece) {
+    PlaceResult result = setSlotValue(slot, piece);
 
     switch (result) {
     case PlaceResult::Ok:
+        return true;
         break;
     case PlaceResult::OutOfRange:
         std::cout << "Pick 1-9\n";
+        return false;
         break;
     case PlaceResult::SlotTaken:
         std::cout << "That slot is taken\n";
+        return false;
         break;
     }
-
-    totalPlayedTurns++;
-    currentPlayer = (currentPlayer == Piece::x) ? Piece::o : Piece::x;
 };
 
 std::string TTT::Board::getCurrentBoardAsString() {
@@ -95,6 +95,14 @@ std::string TTT::Board::getCurrentBoardAsString() {
         result.push_back('\n');
     }
     return result;
+};
+
+TTT::Piece TTT::Board::getPlayerPiece() {
+    return playerPiece;
+}
+
+void TTT::Board::setPlayerPiece(TTT::Piece piece) {
+    playerPiece = piece;
 };
 
 bool TTT::Board::gameOver() {
@@ -145,6 +153,52 @@ int TTT::Board::score(TTT::Board& thisBoard) {
 
     return 0;
 }
+
+int TTT::Board::score(TTT::Board& thisBoard, int depth) {
+    if (thisBoard.checkWin(Piece::x)) {
+        return 10 - depth;
+    }
+
+    if (thisBoard.checkWin(Piece::o)) {
+        return depth - 10;
+    }
+
+    return 0;
+}
+
+int TTT::Board::evaluate() {
+    int score;
+
+    // Rows
+    for (int i = 0; i < 3; i++) {
+        int x = 0;
+        int o = 0;
+
+        for (int j = 0; j < 3; j++) {
+            if (currentBoard[i][j] == Piece::x) x++;
+            if (currentBoard[i][j] == Piece::o) o++;
+        }
+
+        if (x == 2 && o == 0) score += 5;
+        if (o == 2 && x == 0) score -= 5;
+    }
+
+    // Columns
+    for (int i = 0; i < 3; i++) {
+        int x = 0;
+        int o = 0;
+
+        for (int j = 0; j < 3; j++) {
+            if (currentBoard[j][i] == Piece::x) x++;
+            if (currentBoard[j][i] == Piece::o) o++;
+        }
+
+        if (x == 2 && o == 0) score += 5;
+        if (0 == 2 && x == 0) score -= 5;
+    }
+
+    return score;
+};
 
 std::vector<int> TTT::Board::getAvailableMoves() {
     std::vector<int> moves;

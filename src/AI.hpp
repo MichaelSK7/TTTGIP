@@ -3,10 +3,16 @@
 #include "board.hpp"
 
 namespace TTT {
+
 class AI {
   private:
+    Piece AIPiece = Piece::None;
+
   public:
-    int minimax(TTT::Board& Board, bool maximizing);
-    int findBestMove(TTT::Board& board);
+    void AIMove(TTT::Board& board);
+
+    int minimax(TTT::Board& Board, int depth, int maxDepth, bool maximizing);
+
+    int findBestMove(TTT::Board& board, int maxDepth, bool& maximizing);
 };
 } // namespace TTT

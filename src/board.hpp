@@ -20,14 +20,12 @@ class Board {
     int XCount = 0;
     int OCount = 0;
 
-    Piece currentPlayer = Piece::o;
-    int totalPlayedTurns = 0;
-
-    Piece currentBoard[3][3] = {};
+    Piece playerPiece = Piece::None;
 
   public:
-    void main();
-    void displayBoard();
+    Piece currentBoard[3][3] = {};
+
+    void showBoard();
     void clearBoard();
 
     Piece charToValue(char character);
@@ -35,14 +33,21 @@ class Board {
 
     PlaceResult setSlotValue(int slot, Piece value);
     PlaceResult setSlotValue(int slot, Piece value, bool isForClear);
-    void place(int slot);
+    void forceSetSlotValue(int slot, Piece piece);
+    bool place(int slot, Piece piece);
 
     std::string getCurrentBoardAsString();
+    Piece getPlayerPiece();
+    void setPlayerPiece(Piece piece);
 
     bool gameOver();
     bool boardIsFull();
+
     bool checkWin(Piece player);
     int score(Board& thisBoard);
+    int score(Board& thisBoard, int depth);
+    int evaluate();
+
     std::vector<int> getAvailableMoves();
 };
 

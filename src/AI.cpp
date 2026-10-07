@@ -2,13 +2,35 @@
 #include "Board.hpp"
 
 #include <algorithm>
+#include <iostream>
 #include <vector>
 
 using namespace TTT;
 
-int AI::minimax(TTT::Board& thisBoard, bool maximizing) {
+void AI::AIMove(TTT::Board& board) {
+    bool maximizing;
+
+    switch (board.getPlayerPiece()) {
+    case Piece::x:
+        AIPiece = Piece::o;
+        maximizing = false;
+        break;
+    case Piece::o:
+        AIPiece = Piece::x;
+        maximizing = true;
+        break;
+    }
+
+    board.setSlotValue(findBestMove(board, 3, maximizing), AIPiece);
+}
+
+int AI::minimax(TTT::Board& thisBoard, int depth, int maxDepth, bool maximizing) {
     if (thisBoard.gameOver()) {
-        return thisBoard.score(thisBoard);
+        return thisBoard.score(thisBoard, depth);
+    }
+
+    if (depth >= maxDepth) {
+        return thisBoard.evaluate();
     }
 
     std::vector<int> scores;
@@ -16,13 +38,13 @@ int AI::minimax(TTT::Board& thisBoard, bool maximizing) {
     for (int move : thisBoard.getAvailableMoves()) {
         Piece player = maximizing ? Piece::x : Piece::o;
 
-        thisBoard.setSlotValue(move, player);
+        thisBoard.forceSetSlotValue(move, player);
 
-        int result = minimax(thisBoard, !maximizing);
+        int result = minimax(thisBoard, depth + 1, maxDepth, !maximizing);
 
         scores.push_back(result);
 
-        thisBoard.setSlotValue(move, Piece::None);
+        thisBoard.forceSetSlotValue(move, Piece::None);
     }
 
     if (maximizing) {
@@ -32,22 +54,22 @@ int AI::minimax(TTT::Board& thisBoard, bool maximizing) {
     }
 }
 
-int AI::findBestMove(TTT::Board& board) {
-    int bestScore = -1000;
+int AI::findBestMove(TTT::Board& board, int maxDepth, bool& maximizing) {
+    int bestScore = maximizing ? -1000 : 1000;
     int bestMove = -1;
 
     for (int move : board.getAvailableMoves()) {
-        board.setSlotValue(move, Piece::x);
+        board.forceSetSlotValue(move, AIPiece);
 
-        int result = minimax(board, false);
+        int result = minimax(board, 1, maxDepth, !maximizing);
 
-        board.setSlotValue(move, Piece::None);
+        board.forceSetSlotValue(move, Piece::None);
 
-        if (result > bestScore) {
+        if ((maximizing && result > bestScore) || (!maximizing && result < bestScore)) {
             bestScore = result;
             bestMove = move;
         }
     }
 
-    return static_cast<int>(bestMove);
+    return bestMove;
 }
