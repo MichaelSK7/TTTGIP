@@ -1,29 +1,8 @@
 #include "game.hpp"
+#include "types/difficulty.hpp"
 #include <iostream>
 
 TTT::Game::Game() {
-    welcomeMessage();
-
-    // Diff is not bound check. Will be done later.
-    int diff;
-    std::cout << "What difficulty do you want the AI to be?\n";
-
-    std::cin >> diff;
-
-    switch (diff) {
-    case 1:
-        gameDiff = Difficulty::EASY;
-        break;
-    case 2:
-        gameDiff = Difficulty::MEDIUM;
-        break;
-    case 3:
-        gameDiff = Difficulty::HARD;
-        break;
-    case 4:
-        gameDiff = Difficulty::IMPOSSIBLE;
-        break;
-    }
 
     startGame();
 }
@@ -34,6 +13,29 @@ void TTT::Game::startGame() {
     bool isRunning = true;
     char input;
     char playerPiece;
+
+    welcomeMessage();
+
+    // Diff is not bound check. Will be done later.
+    int diff;
+    std::cout << "What difficulty do you want the AI to be?\n";
+
+    std::cin >> diff;
+
+    switch (diff) {
+    case 1:
+        ai.setDifficulty(Difficulty::EASY);
+        break;
+    case 2:
+        ai.setDifficulty(Difficulty::MEDIUM);
+        break;
+    case 3:
+        ai.setDifficulty(Difficulty::HARD);
+        break;
+    case 4:
+        ai.setDifficulty(Difficulty::IMPOSSIBLE);
+        break;
+    }
 
     startMessage();
 
@@ -123,6 +125,7 @@ void TTT::Game::playerTurn(TTT::Board& board) {
 
         // Player
         if (!(board.place(c, board.getPlayerPiece()))) {
+            board.showBoard();
             continue;
         };
 

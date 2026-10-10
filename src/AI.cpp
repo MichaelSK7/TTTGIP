@@ -21,7 +21,7 @@ void AI::AIMove(TTT::Board& board) {
         break;
     }
 
-    board.setSlotValue(findBestMove(board, 3, maximizing), AIPiece);
+    board.setSlotValue(findBestMove(board, difficultyToInt(AIDifficulty), maximizing), AIPiece);
 }
 
 int AI::minimax(TTT::Board& thisBoard, int depth, int maxDepth, bool maximizing) {
@@ -73,3 +73,21 @@ int AI::findBestMove(TTT::Board& board, int maxDepth, bool& maximizing) {
 
     return bestMove;
 }
+
+int AI::difficultyToInt(Difficulty diff) {
+    switch (diff) {
+    case Difficulty::EASY:
+        return 1;
+    case Difficulty::MEDIUM:
+        return 3;
+    case Difficulty::HARD:
+        return 5;
+    case Difficulty::IMPOSSIBLE:
+        return 9;
+    }
+    return 1;
+};
+
+void AI::setDifficulty(Difficulty diff) {
+    AIDifficulty = diff;
+};
