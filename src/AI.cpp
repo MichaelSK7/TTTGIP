@@ -1,5 +1,5 @@
 #include "AI.hpp"
-#include "Board.hpp"
+#include "board.hpp"
 
 #include <algorithm>
 #include <iostream>

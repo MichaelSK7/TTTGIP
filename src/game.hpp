@@ -9,6 +9,7 @@ namespace TTT {
 
 class Game {
   private:
+    int totalPlayedMoves;
     Difficulty gameDiff = Difficulty::EASY;
 
   public:

@@ -78,16 +78,26 @@ void TTT::Game::startGame() {
         std::cout << '\n';
 
         while (isRunning) {
+            // Player
             playerTurn(board);
+            totalPlayedMoves++;
+
+            if (board.gameOver()) {
+                std::cout << "Game over TEST!\n";
+                return;
+            };
 
             // AI
             std::cout << "AI's move:\n";
             ai.AIMove(board);
+            totalPlayedMoves++;
             board.showBoard();
+
             if (board.gameOver()) {
-                std::cout << "Game over!\n";
-                break;
+                std::cout << "Game over! TEST\n";
+                return;
             };
+
             std::cout << '\n';
         }
     } else {
@@ -96,15 +106,27 @@ void TTT::Game::startGame() {
             // AI
             std::cout << "AI's move:\n";
             ai.AIMove(board);
+            totalPlayedMoves++;
+
+            board.showBoard();
+
             if (board.gameOver()) {
                 std::cout << "Game over!\n";
-                break;
+                return;
             };
-            board.showBoard();
+
             std::cout << '\n';
 
+            // Player
             std::cout << "Your turn!\n";
             playerTurn(board);
+            totalPlayedMoves++;
+
+            if (board.gameOver()) {
+                std::cout << "Game over!\n";
+                return;
+            };
+
             std::cout << '\n';
         }
     }
@@ -130,12 +152,6 @@ void TTT::Game::playerTurn(TTT::Board& board) {
         };
 
         board.showBoard();
-
-        if (board.gameOver()) {
-            std::cout << "Game over!\n";
-            break;
-        };
-
         break;
     }
 }
