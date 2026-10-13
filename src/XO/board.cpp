@@ -82,6 +82,7 @@ bool TTT::Board::place(int slot, Piece piece) {
         return false;
         break;
     }
+    return false;
 };
 
 std::string TTT::Board::getCurrentBoardAsString() {

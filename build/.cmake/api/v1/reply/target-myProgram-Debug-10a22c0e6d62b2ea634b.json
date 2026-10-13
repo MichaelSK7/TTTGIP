@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/spons/Projects/TTTGIP/bin/myProgram"
+			"path" : "D:/HOBBY/Programming/Projects/TicTacToe/bin/myProgram.exe"
+		},
+		{
+			"path" : "D:/HOBBY/Programming/Projects/TicTacToe/bin/myProgram.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -54,11 +57,11 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/spons/Projects/TTTGIP/src"
+					"path" : "D:/HOBBY/Programming/Projects/TicTacToe/src"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/spons/Projects/TTTGIP/include"
+					"path" : "D:/HOBBY/Programming/Projects/TicTacToe/include"
 				}
 			],
 			"language" : "CXX",
@@ -88,12 +91,16 @@
 			{
 				"fragment" : "-g",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "myProgram",
-	"nameOnDisk" : "myProgram",
+	"nameOnDisk" : "myProgram.exe",
 	"paths" : 
 	{
 		"build" : ".",

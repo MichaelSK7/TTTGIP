@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/spons/Projects/TTTGIP/build/cmake_install.cmake"
+		"D:/HOBBY/Programming/Projects/TicTacToe/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }
