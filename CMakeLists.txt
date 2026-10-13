@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.4)
+cmake_minimum_required(VERSION 4.2)
 project(myProgram)
 
 # These line are to specify where we want you exe to end up in

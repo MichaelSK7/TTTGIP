@@ -1,32 +1,32 @@
 [
 {
-  "directory": "D:/HOBBY/Programming/Projects/TicTacToe/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -ID:/HOBBY/Programming/Projects/TicTacToe/src -ID:/HOBBY/Programming/Projects/TicTacToe/include -g -std=gnu++17 -o CMakeFiles\\myProgram.dir\\src\\AI.cpp.obj -c D:\\HOBBY\\Programming\\Projects\\TicTacToe\\src\\AI.cpp",
-  "file": "D:/HOBBY/Programming/Projects/TicTacToe/src/AI.cpp",
-  "output": "D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/myProgram.dir/src/AI.cpp.obj"
+  "directory": "/home/michael/Programming/TTTGIP/build",
+  "command": "/usr/bin/g++ -I/home/michael/Programming/TTTGIP/src -I/home/michael/Programming/TTTGIP/include -g -std=gnu++17 -o CMakeFiles/myProgram.dir/src/main.cpp.o -c /home/michael/Programming/TTTGIP/src/main.cpp",
+  "file": "/home/michael/Programming/TTTGIP/src/main.cpp",
+  "output": "/home/michael/Programming/TTTGIP/build/CMakeFiles/myProgram.dir/src/main.cpp.o"
 },
 {
-  "directory": "D:/HOBBY/Programming/Projects/TicTacToe/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -ID:/HOBBY/Programming/Projects/TicTacToe/src -ID:/HOBBY/Programming/Projects/TicTacToe/include -g -std=gnu++17 -o CMakeFiles\\myProgram.dir\\src\\board.cpp.obj -c D:\\HOBBY\\Programming\\Projects\\TicTacToe\\src\\board.cpp",
-  "file": "D:/HOBBY/Programming/Projects/TicTacToe/src/board.cpp",
-  "output": "D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/myProgram.dir/src/board.cpp.obj"
+  "directory": "/home/michael/Programming/TTTGIP/build",
+  "command": "/usr/bin/g++ -I/home/michael/Programming/TTTGIP/src -I/home/michael/Programming/TTTGIP/include -g -std=gnu++17 -o CMakeFiles/myProgram.dir/src/robot/robot.cpp.o -c /home/michael/Programming/TTTGIP/src/robot/robot.cpp",
+  "file": "/home/michael/Programming/TTTGIP/src/robot/robot.cpp",
+  "output": "/home/michael/Programming/TTTGIP/build/CMakeFiles/myProgram.dir/src/robot/robot.cpp.o"
 },
 {
-  "directory": "D:/HOBBY/Programming/Projects/TicTacToe/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -ID:/HOBBY/Programming/Projects/TicTacToe/src -ID:/HOBBY/Programming/Projects/TicTacToe/include -g -std=gnu++17 -o CMakeFiles\\myProgram.dir\\src\\game.cpp.obj -c D:\\HOBBY\\Programming\\Projects\\TicTacToe\\src\\game.cpp",
-  "file": "D:/HOBBY/Programming/Projects/TicTacToe/src/game.cpp",
-  "output": "D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/myProgram.dir/src/game.cpp.obj"
+  "directory": "/home/michael/Programming/TTTGIP/build",
+  "command": "/usr/bin/g++ -I/home/michael/Programming/TTTGIP/src -I/home/michael/Programming/TTTGIP/include -g -std=gnu++17 -o CMakeFiles/myProgram.dir/src/xo/AI.cpp.o -c /home/michael/Programming/TTTGIP/src/xo/AI.cpp",
+  "file": "/home/michael/Programming/TTTGIP/src/xo/AI.cpp",
+  "output": "/home/michael/Programming/TTTGIP/build/CMakeFiles/myProgram.dir/src/xo/AI.cpp.o"
 },
 {
-  "directory": "D:/HOBBY/Programming/Projects/TicTacToe/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -ID:/HOBBY/Programming/Projects/TicTacToe/src -ID:/HOBBY/Programming/Projects/TicTacToe/include -g -std=gnu++17 -o CMakeFiles\\myProgram.dir\\src\\main.cpp.obj -c D:\\HOBBY\\Programming\\Projects\\TicTacToe\\src\\main.cpp",
-  "file": "D:/HOBBY/Programming/Projects/TicTacToe/src/main.cpp",
-  "output": "D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/myProgram.dir/src/main.cpp.obj"
+  "directory": "/home/michael/Programming/TTTGIP/build",
+  "command": "/usr/bin/g++ -I/home/michael/Programming/TTTGIP/src -I/home/michael/Programming/TTTGIP/include -g -std=gnu++17 -o CMakeFiles/myProgram.dir/src/xo/board.cpp.o -c /home/michael/Programming/TTTGIP/src/xo/board.cpp",
+  "file": "/home/michael/Programming/TTTGIP/src/xo/board.cpp",
+  "output": "/home/michael/Programming/TTTGIP/build/CMakeFiles/myProgram.dir/src/xo/board.cpp.o"
 },
 {
-  "directory": "D:/HOBBY/Programming/Projects/TicTacToe/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -ID:/HOBBY/Programming/Projects/TicTacToe/src -ID:/HOBBY/Programming/Projects/TicTacToe/include -g -std=gnu++17 -o CMakeFiles\\myProgram.dir\\src\\save.cpp.obj -c D:\\HOBBY\\Programming\\Projects\\TicTacToe\\src\\save.cpp",
-  "file": "D:/HOBBY/Programming/Projects/TicTacToe/src/save.cpp",
-  "output": "D:/HOBBY/Programming/Projects/TicTacToe/build/CMakeFiles/myProgram.dir/src/save.cpp.obj"
+  "directory": "/home/michael/Programming/TTTGIP/build",
+  "command": "/usr/bin/g++ -I/home/michael/Programming/TTTGIP/src -I/home/michael/Programming/TTTGIP/include -g -std=gnu++17 -o CMakeFiles/myProgram.dir/src/xo/game.cpp.o -c /home/michael/Programming/TTTGIP/src/xo/game.cpp",
+  "file": "/home/michael/Programming/TTTGIP/src/xo/game.cpp",
+  "output": "/home/michael/Programming/TTTGIP/build/CMakeFiles/myProgram.dir/src/xo/game.cpp.o"
 }
 ]
